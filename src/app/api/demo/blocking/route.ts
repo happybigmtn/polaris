@@ -21,6 +21,11 @@ export async function POST() {
 	const { text } = await generateText({
 		model: openrouter.chat("anthropic/claude-haiku-4.5"),
 		prompt: "What is OpenRouter?",
+		experimental_telemetry: {
+			isEnabled: true,
+			recordInputs: true,
+			recordOutputs: true,
+		},
 	});
 
 	return Response.json({ text });
